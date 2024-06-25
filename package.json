@@ -1,4 +1,5 @@
 {
+  "homepage": "https://geniusinfotechgithub.io/Lesson-Demo",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -7,6 +8,7 @@
     "@testing-library/jest-dom": "^6.4.6",
     "@testing-library/react": "^16.0.0",
     "@testing-library/user-event": "^14.5.2",
+    "gh-pages": "^6.1.1",
     "i": "^0.3.7",
     "npm": "^10.8.1",
     "nth-check": "^2.1.1",
@@ -22,7 +24,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b gitdeploy -d build"
+
   },
   "eslintConfig": {
     "extends": [

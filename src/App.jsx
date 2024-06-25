@@ -1,26 +1,32 @@
+import { useState } from 'react';
 import './App.css';
-import Navbar from './components/Navbar';
-import Aboutus from './components/Aboutus';
-import TextForm from './components/TextForm';
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import Navbar from './components/Navbar'
+import TextForm from './components/TextForm'
 
 function App() {
-  const router = createBrowserRouter([
-    {
-      path: '/Home',
-      element: <> <Navbar heading="SIT" modeText="Enable Dark Mode" /> <TextForm heading="Enter Your Text for Editor" /> </>
-    },
-    {
-      path: '/Aboutus',
-      element: <> <Navbar heading="SIT" modeText="Enable Dark Mode" /> <Aboutus heading="About Us" /> </>
-    },
-  ])
-  return (
-    <>
-        <RouterProvider router={router} />
 
+  const [mode, setMode] = useState('light');
+
+  const [btnText, newbtnText]= useState('Enable Dark Mode')
+
+  const toggleMode = () =>{
+    if (mode === 'light') {
+      setMode('dark');
+      document.body.style.background= 'black';
+      document.body.style.color= 'white';
+    } else {
+      setMode('light');
+      document.body.style.background= 'white';
+      document.body.style.color= 'black';
+    }
+  }
+
+  return (
+    <> 
+      <Navbar title="SIT" aboutText="Contact Us" mode={mode} toggleMode ={toggleMode} btnText={btnText} />
+      <TextForm heading="Enter Text to Analyse Below" mode={mode} toggleMode={toggleMode} />
     </>
-  );
+  );  
 }
 
 export default App;
